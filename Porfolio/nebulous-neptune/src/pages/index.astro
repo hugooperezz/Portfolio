@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Header from '../components/Header.astro';
+import Presentacion from '../components/Presentacion.astro';
+import Sobre_mi from '../components/Sobre_mi.astro';
+import Proyectos from '../components/Proyecto.astro';
+import Habilidades from '../components/Habilidades.astro';
+import Button from '../components/Button.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Portfolio Hugo Pérez</title>
+  </head>
+  <body id="body"
+    class="mx-auto min-h-screen dark:bg-gradient-to-t dark:from-violet-950 dark:to-stone-900 font-mono font-bold bg-gradient-to-t from-violet-950 to-white"
+  >
+    <!--Encabezado-->
+
+	<section id="header">
+		<Header />
+	</section>
+
+
+    
+		
+      <!--Presentacion-->
+      
+	  	<section id="Presentacion">
+			<Presentacion />
+		</section>
+	<div class="grid md:grid-cols-2 md:gap-10 md:mt-20">
+      <!--Sobre mi-->
+
+      	<section id="sobremi">
+			<Sobre_mi />	
+		</section>
+
+	<!--Habilidades-->
+
+	<section id="Habilidades">
+		<Habilidades />	
+	</section>
+	</div>
+
+    <!--Proyectos-->
+      
+	<section id="Proyectos">
+		<Proyectos />	
+	</section>
+    
+    <br /><br /><br />
+	<script>
+		const body = document.getElementById("body");
+		const toggleButton = document.getElementById("toggleTheme");
+  
+		// Seleccionar las secciones y los divs dentro de ellas
+		const sections = document.querySelectorAll('.section-dark');
+		const divs = document.querySelectorAll('.div-dark');
+  
+		toggleButton.addEventListener("click", function () {
+		  // Cambiar las clases del body
+		  body.classList.toggle("bg-white");
+		  body.classList.toggle("text-black");
+		  body.classList.toggle("bg-gray-900");
+		  body.classList.toggle("text-white");
+  
+		  // Cambiar las clases de las secciones y divs
+		  sections.forEach((section) => {
+			section.classList.toggle("bg-gray-800");
+			section.classList.toggle("bg-gray-400"); // Cambia al color claro
+		  });
+  
+		  divs.forEach((div) => {
+			div.classList.toggle("bg-blue-700");
+			div.classList.toggle("bg-blue-200"); // Cambia al color claro
+		  });
+  
+		  // Cambiar el texto del botón según el tema actual
+		  if (body.classList.contains("bg-white")) {
+			toggleButton.textContent = "Modo oscuro";
+		  } else {
+			toggleButton.textContent = "Modo claro";
+		  }
+		});
+	  </script>
+  </body>
+</html>
